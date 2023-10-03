@@ -35,7 +35,7 @@ sudo systemctl enable docker
 
 ## Then you can run Docker Daemon with the `dockerd` command.
 ```bash
-dockerd
+sudo dockerd
 ```
 
 ## Finally on another terminal, do your docker stuffs.
@@ -46,3 +46,33 @@ sudo docker run --rm --gpus all -it -p 8000:8000 <username>/<pkg_name>:latest-gp
 
 
 ###### *Important Note : Running Docker Desktop on ubuntu is very unstable. It will throw this error: `libnvidia-ml.so.1: cannot open shared object file`. Just use the Docker Daemon.
+
+## To Stop all containers:
+```bash
+sudo docker stop $(sudo docker ps -a -q)
+```
+
+## Remove all containers:
+```bash
+sudo docker rm $(sudo docker ps -a -q)
+```
+
+## Remove all images:
+```bash
+sudo docker rmi $(sudo docker images -q)
+```
+
+## Remove all volumes:
+```bash
+sudo docker volume prune
+```
+
+## Remove all networks:
+```bash
+sudo docker network prune
+```
+
+## Clear Docker cache:
+```bash
+sudo docker builder prune --all --force
+```
